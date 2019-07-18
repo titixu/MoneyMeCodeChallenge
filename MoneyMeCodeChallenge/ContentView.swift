@@ -11,7 +11,7 @@ import Combine
 
 struct ContentView : View {
     
-    @EnvironmentObject var loan: LoanViewModel
+    @EnvironmentObject var viewModel: LoanViewModel
     
     private let space: CGFloat = 30
     
@@ -23,22 +23,22 @@ struct ContentView : View {
                 Text("Quote Calculator")
                 
                 VStack(alignment: .leading) {
-                    Text("$\(Int(loan.amount))")
-                    Slider(value: $loan.amount, from: loan.minAmount, through: loan.maxAmount, by: loan.amountOffset)
+                    Text("$\(Int(viewModel.amount))")
+                    Slider(value: $loan.amount, from: viewModel.minAmount, through: viewModel.maxAmount, by: viewModel.amountOffset)
                     HStack {
-                        Text("$\(Int(loan.minAmount))")
+                        Text("$\(Int(viewModel.minAmount))")
                         Spacer()
-                        Text("$\(Int(loan.maxAmount))")
+                        Text("$\(Int(viewModel.maxAmount))")
                     }
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("\(Int(loan.months)) \(loan.getMonthWord(loan.months))")
-                    Slider(value: $loan.months, from: loan.minMonths, through: loan.maxMonths, by: loan.monthOffset)
+                    Text("\(Int(viewModel.months)) \(viewModel.getMonthWord(viewModel.months))")
+                    Slider(value: $loan.months, from: viewModel.minMonths, through: viewModel.maxMonths, by: viewModel.monthOffset)
                     HStack {
-                        Text("\(Int(loan.minMonths)) \(loan.getMonthWord(loan.minMonths))")
+                        Text("\(Int(viewModel.minMonths)) \(viewModel.getMonthWord(viewModel.minMonths))")
                         Spacer()
-                        Text("\(Int(loan.maxMonths)) \(loan.getMonthWord(loan.maxMonths))")
+                        Text("\(Int(viewModel.maxMonths)) \(viewModel.getMonthWord(viewModel.maxMonths))")
                     }
                 }
                 
@@ -46,7 +46,7 @@ struct ContentView : View {
                     self.isShowingAlert = true
                 }.presentation($isShowingAlert) {
                     Alert(title: Text("All set"),
-                          message: Text("You are borrowing $\(Int(loan.amount)) and payback in \(Int(loan.months)) \(loan.getMonthWord(loan.months))"),
+                          message: Text("You are borrowing $\(Int(viewModel.amount)) and payback in \(Int(viewModel.months)) \(viewModel.getMonthWord(viewModel.months))"),
                           dismissButton: .default(Text("Got it!")))
                 }
                 
@@ -59,8 +59,8 @@ struct ContentView : View {
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        let loan = LoanViewModel(loan: Loan.standard())
-        return ContentView().environmentObject(loan)
+        let viewModel = LoanViewModel(viewModel: Loan.standard())
+        return ContentView().environmentObject(viewModel)
     }
 }
 
