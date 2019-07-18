@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Loan {
+struct Loan: Codable {
     var presentValue: Double
     var numberOfPayments: Double
     var rate: Double
@@ -32,6 +32,8 @@ extension Loan {
     }
 }
 
+extension Loan: Equatable {}
+
 struct LoanCalculator {
     
     func pmt(rate : Double, numberOfPayments : Double, amount : Double) -> Double {
@@ -45,7 +47,7 @@ extension Double {
         return (self * 100).rounded() / 100
     }
     
-    var currencuString: String {
+    var currencyString: String {
         return "$\(self.currency)"
     }
 }
