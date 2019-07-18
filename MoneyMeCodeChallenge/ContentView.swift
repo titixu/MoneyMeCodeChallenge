@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView : View {
     
-    @EnvironmentObject var loan: Loan
+    @EnvironmentObject var loan: LoanViewModel
     
     private let space: CGFloat = 30
     
@@ -32,12 +33,12 @@ struct ContentView : View {
                 }
                 
                 VStack(alignment: .leading) {
-                    Text("\(Int(loan.months)) \(getMonthWord(loan.months))")
+                    Text("\(Int(loan.months)) \(loan.getMonthWord(loan.months))")
                     Slider(value: $loan.months, from: loan.minMonths, through: loan.maxMonths, by: loan.monthOffset)
                     HStack {
-                        Text("\(Int(loan.minMonths)) \(getMonthWord(loan.minMonths))")
+                        Text("\(Int(loan.minMonths)) \(loan.getMonthWord(loan.minMonths))")
                         Spacer()
-                        Text("\(Int(loan.maxMonths)) \(getMonthWord(loan.maxMonths))")
+                        Text("\(Int(loan.maxMonths)) \(loan.getMonthWord(loan.maxMonths))")
                     }
                 }
                 
@@ -45,7 +46,7 @@ struct ContentView : View {
                     self.isShowingAlert = true
                 }.presentation($isShowingAlert) {
                     Alert(title: Text("All set"),
-                          message: Text("You are borrowing $\(Int(loan.amount)) and payback in \(Int(loan.months)) \(getMonthWord(loan.months))"),
+                          message: Text("You are borrowing $\(Int(loan.amount)) and payback in \(Int(loan.months)) \(loan.getMonthWord(loan.months))"),
                           dismissButton: .default(Text("Got it!")))
                 }
                 
@@ -53,15 +54,12 @@ struct ContentView : View {
         }
     }
     
-    private func getMonthWord(_ months: Double) -> String {
-        return months == 1 ? "month" : "months"
-    }
 }
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        let loan = Loan()
+        let loan = LoanViewModel(loan: Loan.standard())
         return ContentView().environmentObject(loan)
     }
 }

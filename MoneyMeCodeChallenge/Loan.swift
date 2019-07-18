@@ -7,25 +7,45 @@
 //
 
 import Foundation
-import Combine
-import SwiftUI
 
-final class Loan: BindableObject {
-    var amount: Double = 2000 {
-        didSet { didChange.send(self) }
+struct Loan {
+    var presentValue: Double
+    var numberOfPayments: Double
+    var rate: Double
+    
+    var minPresentValue: Double
+    var maxPresentValue: Double
+    
+    var minNumberOfPayments: Double
+    var maxNumberOfPayments: Double
+}
+
+extension Loan {
+    static func standard() -> Loan {
+        return Loan(presentValue: 3000.0,
+                    numberOfPayments: 1.0,
+                    rate: 0.045,
+                    minPresentValue: 2000.0,
+                    maxPresentValue: 15000.0,
+                    minNumberOfPayments: 1.0,
+                    maxNumberOfPayments: 36.0)
+    }
+}
+
+struct LoanCalculator {
+    
+    func pmt(rate : Double, numberOfPayments : Double, amount : Double) -> Double {
+        return (amount * rate) / (1 - pow((1 + rate), (-numberOfPayments)))
+    }
+}
+
+extension Double {
+    // round to two decimals
+    var currency: Double {
+        return (self * 100).rounded() / 100
     }
     
-    var months: Double = 2 {
-        didSet { didChange.send(self) }
+    var currencuString: String {
+        return "$\(self.currency)"
     }
-    
-    let minAmount: Double = 2000
-    let maxAmount: Double = 15000
-    let amountOffset: Double = 1000
-    
-    let minMonths: Double = 2
-    let maxMonths: Double = 36
-    let monthOffset: Double = 1
-    
-    let didChange = PassthroughSubject<Loan, Never>()
 }

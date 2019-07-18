@@ -4,10 +4,38 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>LogicTest.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>MoneyMeCodeChallenge.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2253756A22E042C10091AE64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>22872F6F22DEC1F900868CE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>22872F8522DEC1FB00868CE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>22872F9022DEC1FB00868CE0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
