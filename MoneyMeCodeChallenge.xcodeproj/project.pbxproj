@@ -15,6 +15,8 @@
 		22872F8022DEC1FB00868CE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22872F7E22DEC1FB00868CE0 /* LaunchScreen.storyboard */; };
 		22872F8B22DEC1FB00868CE0 /* MoneyMeCodeChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872F8A22DEC1FB00868CE0 /* MoneyMeCodeChallengeTests.swift */; };
 		22872F9622DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872F9522DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.swift */; };
+		2296EC4922DF83730041A487 /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296EC4822DF83730041A487 /* Loan.swift */; };
+		2296EC4B22DF84960041A487 /* LoanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296EC4A22DF84960041A487 /* LoanDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		22872F9122DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyMeCodeChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22872F9522DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyMeCodeChallengeUITests.swift; sourceTree = "<group>"; };
 		22872F9722DEC1FB00868CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2296EC4822DF83730041A487 /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Loan.swift; path = ../../../../../System/Volumes/Data/Users/sam/Projects/MoneyMeCodeChallenge/MoneyMeCodeChallenge/Loan.swift; sourceTree = "<group>"; };
+		2296EC4A22DF84960041A487 /* LoanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoanDetailView.swift; path = ../../../../../System/Volumes/Data/Users/sam/Projects/MoneyMeCodeChallenge/MoneyMeCodeChallenge/LoanDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +105,9 @@
 			children = (
 				22872F7322DEC1F900868CE0 /* AppDelegate.swift */,
 				22872F7522DEC1F900868CE0 /* SceneDelegate.swift */,
+				2296EC4822DF83730041A487 /* Loan.swift */,
 				22872F7722DEC1F900868CE0 /* ContentView.swift */,
+				2296EC4A22DF84960041A487 /* LoanDetailView.swift */,
 				22872F7922DEC1FB00868CE0 /* Assets.xcassets */,
 				22872F7E22DEC1FB00868CE0 /* LaunchScreen.storyboard */,
 				22872F8122DEC1FB00868CE0 /* Info.plist */,
@@ -269,7 +275,9 @@
 			files = (
 				22872F7422DEC1F900868CE0 /* AppDelegate.swift in Sources */,
 				22872F7622DEC1F900868CE0 /* SceneDelegate.swift in Sources */,
+				2296EC4B22DF84960041A487 /* LoanDetailView.swift in Sources */,
 				22872F7822DEC1F900868CE0 /* ContentView.swift in Sources */,
+				2296EC4922DF83730041A487 /* Loan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

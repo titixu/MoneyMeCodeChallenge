@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let loan = Loan()
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: ContentView().environmentObject(loan))
+//            window.rootViewController = UIHostingController(rootView: LoanDetailView())
             self.window = window
             window.makeKeyAndVisible()
         }
