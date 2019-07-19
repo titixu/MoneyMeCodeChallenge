@@ -1,8 +1,3 @@
-//
-//  AppDelegate.swift
-//  MoneyMeCodeChallenge
-//
-//  Created by Sam Xu on 17/7/19.
 //  Copyright © 2019 Sam Xu. All rights reserved.
 //
 

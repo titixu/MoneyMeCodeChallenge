@@ -1,8 +1,3 @@
-//
-//  Loan.swift
-//  MoneyMeCodeChallenge
-//
-//  Created by Sam Xu on 18/7/19.
 //  Copyright © 2019 Sam Xu. All rights reserved.
 //
 

@@ -1,8 +1,3 @@
-//
-//  LoanViewModel.swift
-//  MoneyMeCodeChallenge
-//
-//  Created by Sam Xu on 18/7/19.
 //  Copyright © 2019 Sam Xu. All rights reserved.
 //
 
@@ -10,8 +5,9 @@ import SwiftUI
 import Combine
 
 final class LoanViewModel: BindableObject {
+    
     var loan: Loan {
-        didSet { didChange.send(self) }
+        didSet { willChange.send(self) }
     }
     
     var amount: Double {
@@ -48,7 +44,7 @@ final class LoanViewModel: BindableObject {
     
     let monthOffset: Double = 1
     
-    let didChange = PassthroughSubject<LoanViewModel, Never>()
+    let willChange = PassthroughSubject<LoanViewModel, Never>()
     
     init(loan: Loan) {
         self.loan = loan

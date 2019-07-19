@@ -1,8 +1,3 @@
-//
-//  ContentView.swift
-//  MoneyMeCodeChallenge
-//
-//  Created by Sam Xu on 17/7/19.
 //  Copyright © 2019 Sam Xu. All rights reserved.
 //
 
@@ -14,43 +9,40 @@ struct ContentView : View {
     @EnvironmentObject var viewModel: LoanViewModel
     
     private let space: CGFloat = 30
-    
-    @State private var isShowingAlert = false
-    
+        
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: space) {
-                Text("Quote Calculator")
-                
-                VStack(alignment: .leading) {
-                    Text("$\(Int(viewModel.amount))")
-                    Slider(value: $loan.amount, from: viewModel.minAmount, through: viewModel.maxAmount, by: viewModel.amountOffset)
-                    HStack {
-                        Text("$\(Int(viewModel.minAmount))")
-                        Spacer()
-                        Text("$\(Int(viewModel.maxAmount))")
+        NavigationView {
+            
+            ScrollView {
+                VStack(alignment: .center, spacing: space) {
+                    
+                    VStack(alignment: .leading) {
+                        Text("$\(Int(viewModel.amount))")
+                        Slider(value: $viewModel.amount, from: viewModel.minAmount, through: viewModel.maxAmount, by: viewModel.amountOffset)
+                        HStack {
+                            Text("$\(Int(viewModel.minAmount))")
+                            Spacer()
+                            Text("$\(Int(viewModel.maxAmount))")
+                        }
                     }
-                }
-                
-                VStack(alignment: .leading) {
-                    Text("\(Int(viewModel.months)) \(viewModel.getMonthWord(viewModel.months))")
-                    Slider(value: $loan.months, from: viewModel.minMonths, through: viewModel.maxMonths, by: viewModel.monthOffset)
-                    HStack {
-                        Text("\(Int(viewModel.minMonths)) \(viewModel.getMonthWord(viewModel.minMonths))")
-                        Spacer()
-                        Text("\(Int(viewModel.maxMonths)) \(viewModel.getMonthWord(viewModel.maxMonths))")
+                    
+                    VStack(alignment: .leading) {
+                        Text("\(Int(viewModel.months)) \(viewModel.getMonthWord(viewModel.months))")
+                        Slider(value: $viewModel.months, from: viewModel.minMonths, through: viewModel.maxMonths, by: viewModel.monthOffset)
+                        HStack {
+                            Text("\(Int(viewModel.minMonths)) \(viewModel.getMonthWord(viewModel.minMonths))")
+                            Spacer()
+                            Text("\(Int(viewModel.maxMonths)) \(viewModel.getMonthWord(viewModel.maxMonths))")
+                        }
                     }
-                }
-                
-                Button("Calculate Quote") {
-                    self.isShowingAlert = true
-                }.presentation($isShowingAlert) {
-                    Alert(title: Text("All set"),
-                          message: Text("You are borrowing $\(Int(viewModel.amount)) and payback in \(Int(viewModel.months)) \(viewModel.getMonthWord(viewModel.months))"),
-                          dismissButton: .default(Text("Got it!")))
-                }
-                
-            }.padding(space)
+                    
+                    NavigationLink(destination: LoanDetailView()) {
+                        Text("Calculate Quote")
+                    }
+                    
+                }.padding(space)
+            }
+            .navigationBarTitle("Quote Calculator", displayMode: .inline)
         }
     }
     
@@ -59,7 +51,7 @@ struct ContentView : View {
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        let viewModel = LoanViewModel(viewModel: Loan.standard())
+        let viewModel = LoanViewModel(loan: Loan.standard())
         return ContentView().environmentObject(viewModel)
     }
 }
