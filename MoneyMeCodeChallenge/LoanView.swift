@@ -4,7 +4,7 @@
 import SwiftUI
 import Combine
 
-struct ContentView : View {
+struct LoanView : View {
     
     @EnvironmentObject var viewModel: LoanViewModel
     
@@ -52,7 +52,7 @@ struct ContentView : View {
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
         let viewModel = LoanViewModel(loan: Loan.standard())
-        return ContentView().environmentObject(viewModel)
+        return LoanView().environmentObject(viewModel)
     }
 }
 

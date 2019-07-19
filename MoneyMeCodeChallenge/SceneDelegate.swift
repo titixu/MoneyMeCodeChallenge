@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let viewModel = LoanViewModel(loan: Loan.standard())
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: ContentView().environmentObject(viewModel))
+            window.rootViewController = UIHostingController(rootView: LoanView().environmentObject(viewModel))
             self.window = window
             window.makeKeyAndVisible()
         }

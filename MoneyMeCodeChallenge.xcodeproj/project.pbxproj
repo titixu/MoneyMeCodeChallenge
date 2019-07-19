@@ -13,7 +13,7 @@
 		2253757622E0889B0091AE64 /* LoanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2253757422E0889B0091AE64 /* LoanViewModel.swift */; };
 		22872F7422DEC1F900868CE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872F7322DEC1F900868CE0 /* AppDelegate.swift */; };
 		22872F7622DEC1F900868CE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872F7522DEC1F900868CE0 /* SceneDelegate.swift */; };
-		22872F7822DEC1F900868CE0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872F7722DEC1F900868CE0 /* ContentView.swift */; };
+		22872F7822DEC1F900868CE0 /* LoanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872F7722DEC1F900868CE0 /* LoanView.swift */; };
 		22872F7A22DEC1FB00868CE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22872F7922DEC1FB00868CE0 /* Assets.xcassets */; };
 		22872F7D22DEC1FB00868CE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22872F7C22DEC1FB00868CE0 /* Preview Assets.xcassets */; };
 		22872F8022DEC1FB00868CE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22872F7E22DEC1FB00868CE0 /* LaunchScreen.storyboard */; };
@@ -41,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22163E2922E1886700E57EBC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../../../System/Volumes/Data/Users/sam/Projects/MoneyMeCodeChallenge/README.md; sourceTree = "<group>"; };
 		2253756B22E042C10091AE64 /* LogicTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2253756D22E042C10091AE64 /* LogicTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicTest.swift; sourceTree = "<group>"; };
 		2253756F22E042C10091AE64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +49,7 @@
 		22872F7022DEC1F900868CE0 /* MoneyMeCodeChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyMeCodeChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22872F7322DEC1F900868CE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22872F7522DEC1F900868CE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		22872F7722DEC1F900868CE0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		22872F7722DEC1F900868CE0 /* LoanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanView.swift; sourceTree = "<group>"; };
 		22872F7922DEC1FB00868CE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22872F7C22DEC1FB00868CE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22872F7F22DEC1FB00868CE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		22872F6722DEC1F900868CE0 = {
 			isa = PBXGroup;
 			children = (
+				22163E2922E1886700E57EBC /* README.md */,
 				22872F7222DEC1F900868CE0 /* MoneyMeCodeChallenge */,
 				22872F8922DEC1FB00868CE0 /* MoneyMeCodeChallengeTests */,
 				22872F9422DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests */,
@@ -133,7 +135,7 @@
 				22872F7522DEC1F900868CE0 /* SceneDelegate.swift */,
 				2296EC4822DF83730041A487 /* Loan.swift */,
 				2253757422E0889B0091AE64 /* LoanViewModel.swift */,
-				22872F7722DEC1F900868CE0 /* ContentView.swift */,
+				22872F7722DEC1F900868CE0 /* LoanView.swift */,
 				2296EC4A22DF84960041A487 /* LoanDetailView.swift */,
 				22872F7922DEC1FB00868CE0 /* Assets.xcassets */,
 				22872F7E22DEC1FB00868CE0 /* LaunchScreen.storyboard */,
@@ -342,7 +344,7 @@
 				22872F7622DEC1F900868CE0 /* SceneDelegate.swift in Sources */,
 				2253757522E0889B0091AE64 /* LoanViewModel.swift in Sources */,
 				2296EC4B22DF84960041A487 /* LoanDetailView.swift in Sources */,
-				22872F7822DEC1F900868CE0 /* ContentView.swift in Sources */,
+				22872F7822DEC1F900868CE0 /* LoanView.swift in Sources */,
 				2296EC4922DF83730041A487 /* Loan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

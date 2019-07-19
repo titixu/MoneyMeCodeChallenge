@@ -8,13 +8,14 @@ struct LoanDetailView: View {
     private let space: CGFloat = 30.0
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .center, spacing: space) {
-                Text("Your qoute")
-                userGroup()
-                Text("")
-                loanGroup()
-            }.padding(space)            
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .center, spacing: space) {
+                    userGroup()
+                    Text("")
+                    loanGroup()
+                }.padding(space)
+            }.navigationBarTitle("Your qoute", displayMode: .inline)
         }
     }
     
