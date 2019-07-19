@@ -36,6 +36,12 @@ struct LoanCalculator {
     }
 }
 
+extension LoanCalculator {
+    func pmt(loan: Loan) -> Double {
+        return pmt(rate: loan.rate, numberOfPayments: loan.numberOfPayments, amount: loan.presentValue)
+    }
+}
+
 extension Double {
     // round to two decimals
     var currency: Double {

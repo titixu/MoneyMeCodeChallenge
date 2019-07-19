@@ -35,8 +35,8 @@ struct LoanView : View {
                             Text("\(Int(viewModel.maxMonths)) \(viewModel.getMonthWord(viewModel.maxMonths))")
                         }
                     }
-                    
-                    NavigationLink(destination: LoanDetailView()) {
+
+                    NavigationLink(destination: LoanDetailView(loan: Loan.standard())) {
                         Text("Calculate Quote")
                     }
                     

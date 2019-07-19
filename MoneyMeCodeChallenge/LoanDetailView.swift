@@ -5,6 +5,9 @@ import SwiftUI
 import Combine
 
 struct LoanDetailView: View {
+    
+    var loan: Loan
+    
     private let space: CGFloat = 30.0
     
     var body: some View {
@@ -58,23 +61,23 @@ struct LoanDetailView: View {
             HStack {
                 Text("Finance amount")
                 Spacer()
-                Text("$5,000")
+                Text(loan.presentValue.currencyString)
             }
             
             HStack {
                 Spacer()
-                Text("over 24 months").padding(.top, -20)
+                Text("over \(Int(loan.numberOfPayments)) months").padding(.top, -20)
             }
 
             HStack {
-                Text("Repoyments from")
+                Text("Repayments from")
                 Spacer()
-                Text("$56.15")
+                Text(LoanCalculator().pmt(loan: loan).currencyString)
             }
             
             HStack {
                 Spacer()
-                Text("Weekly").padding(.top, -20)
+                Text("Monthly").padding(.top, -20)
             }
         }
     }
@@ -84,7 +87,7 @@ struct LoanDetailView: View {
 #if DEBUG
 struct LoanDetailView_Previews : PreviewProvider {
     static var previews: some View {
-        return LoanDetailView()
+        return LoanDetailView(loan: Loan.standard())
     }
 }
 #endif
