@@ -6,7 +6,10 @@ import Combine
 
 struct LoanDetailView: View {
     
-    var loan: Loan
+    @EnvironmentObject var viewModel: LoanDetailViewModel
+    
+    // edit user detail
+    @State var editing = false
     
     private let space: CGFloat = 30.0
     
@@ -15,8 +18,10 @@ struct LoanDetailView: View {
             ScrollView {
                 VStack(alignment: .center, spacing: space) {
                     userGroup()
-                    Text("")
-                    loanGroup()
+                    if !editing {
+                        Spacer()
+                        loanGroup()
+                    }
                 }.padding(space)
             }.navigationBarTitle("Your qoute", displayMode: .inline)
         }
@@ -27,27 +32,48 @@ struct LoanDetailView: View {
             HStack {
                 Text("Your information")
                 Spacer()
-                Button("Edit") { }
+                Button(action: {
+                    self.editing.toggle()
+                }) {
+                    if editing {
+                        Text("Done")
+                    } else {
+                        Text("Edit")
+                    }
+                }
             }
             
             HStack {
                 Text("Name")
                 Spacer()
-                Text("John Doe")
+                textField("Name", binding: $viewModel.user.name)
             }
             
             HStack {
                 Text("Mobile")
                 Spacer()
-                Text("04778095252")
+                textField("Mobile", binding: $viewModel.user.phone)
             }
             
             HStack {
                 Text("Email")
                 Spacer()
-                Text("johndoe@test.com")
+                textField("Email", binding: $viewModel.user.email)
             }
         }
+        .multilineTextAlignment(.trailing) // trailing for TextField's text
+            .textFieldStyle(RoundedBorderTextFieldStyle.Member.roundedBorder)
+    }
+    
+    private func textField(_ name: String, binding: Binding<String>) -> some View {
+        Group {
+            if editing {
+                TextField(name, text: binding)
+            } else {
+                Text(binding.value)
+            }
+        }
+        
     }
     
     private func loanGroup() -> some View {
@@ -61,18 +87,18 @@ struct LoanDetailView: View {
             HStack {
                 Text("Finance amount")
                 Spacer()
-                Text(loan.presentValue.currencyString)
+                Text(viewModel.loan.presentValue.currencyString)
             }
             
             HStack {
                 Spacer()
-                Text("over \(Int(loan.numberOfPayments)) months").padding(.top, -20)
+                Text("over \(Int(viewModel.loan.numberOfPayments)) months").padding(.top, -20)
             }
 
             HStack {
                 Text("Repayments from")
                 Spacer()
-                Text(LoanCalculator().pmt(loan: loan).currencyString)
+                Text(LoanCalculator().pmt(loan: viewModel.loan).currencyString)
             }
             
             HStack {
@@ -87,7 +113,8 @@ struct LoanDetailView: View {
 #if DEBUG
 struct LoanDetailView_Previews : PreviewProvider {
     static var previews: some View {
-        return LoanDetailView(loan: Loan.standard())
+        let viewModel = LoanDetailViewModel(loan: Loan.standard(), user: UserDefaults.standard.user ?? User.sample(), storage: UserDefaults.standard)
+        return LoanDetailView().environmentObject(viewModel)
     }
 }
 #endif

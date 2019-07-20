@@ -5,6 +5,7 @@ import XCTest
 
 class LogicTest: XCTestCase {
 
+    // Test loan object
     func testLoan() {
 
         let loan = Loan.standard()
@@ -41,20 +42,66 @@ class LogicTest: XCTestCase {
         
         XCTAssertEqual(loan, viewModel.loan)
         
-        XCTAssertEqual(viewModel.amount, loan.presentValue)
-        XCTAssertEqual(viewModel.months, loan.numberOfPayments)
-        XCTAssertEqual(viewModel.minAmount, loan.minPresentValue)
-        XCTAssertEqual(viewModel.maxAmount, loan.maxPresentValue)
-        XCTAssertEqual(viewModel.minMonths, loan.minNumberOfPayments)
-        XCTAssertEqual(viewModel.maxMonths, loan.maxNumberOfPayments)
-        XCTAssertEqual(viewModel.interestRate, loan.rate)
+        XCTAssertEqual(viewModel.amount, "$3000")
+        XCTAssertEqual(viewModel.months, "1 month")
+        XCTAssertEqual(viewModel.minAmount, "$2000")
+        XCTAssertEqual(viewModel.maxAmount, "$15000")
+        XCTAssertEqual(viewModel.minMonths, "1 month")
+        XCTAssertEqual(viewModel.maxMonths, "36 months")
         XCTAssertEqual(viewModel.getMonthWord(1.0), "month")
         XCTAssertEqual(viewModel.getMonthWord(2.0), "months")
         
-        viewModel.amount = 4000
+        viewModel.loan.presentValue = 4000
         XCTAssertEqual(viewModel.loan.presentValue, 4000)
         
-        viewModel.months = 2
+        viewModel.loan.numberOfPayments = 2
         XCTAssertEqual(viewModel.loan.numberOfPayments, 2)
+    }
+}
+
+class UserTest: XCTestCase {
+    func testSampleUser() {
+        let user = User.sample()
+        
+        XCTAssertNotEqual(user.id, 0)
+        
+        XCTAssertEqual(user.name, "John Doe", "Sample user name should be John Doe")
+        XCTAssertEqual(user.phone, "04778095252", "Sample user phone should be 04778095252")
+        XCTAssertEqual(user.email, "johndoe@test.com", "Sample user email should be johndoe@test.com")
+    }
+    
+    func testUserStorage() {
+        var userStorage: UserStorageProtocol = UserDefaults.standard
+        
+        // first clean up the storage
+        userStorage.user = nil
+        XCTAssertNil(userStorage.user, "User should be nil after clean up")
+        
+        userStorage.user = User.sample()
+        XCTAssertNotNil(userStorage.user, "User should be the sample user")
+    }
+    
+    func testLoanDetailViewModel() {
+        let viewModel = LoanDetailViewModel(loan: Loan.standard(), user: UserDefaults.standard.user ?? User.sample(), storage: UserDefaults.standard)
+        
+        viewModel.user = User(id: 432, name: "testName", phone: "1234567", email: "test@test.com")
+        XCTAssertNotNil(viewModel.user, "User should be the sample user")
+        
+        let user = viewModel.user
+        XCTAssertEqual(user.id, 432)
+        XCTAssertEqual(user.name, "testName")
+        XCTAssertEqual(user.phone, "1234567")
+        XCTAssertEqual(user.email, "test@test.com")
+        
+        let loan = Loan(presentValue: 43, numberOfPayments: 3, rate: 0.043, minPresentValue: 1, maxPresentValue: 4324, minNumberOfPayments: 1, maxNumberOfPayments: 44)
+        viewModel.loan = loan
+        
+        XCTAssertEqual(viewModel.loan.presentValue, 43)
+        XCTAssertEqual(viewModel.loan.numberOfPayments, 3)
+        XCTAssertEqual(viewModel.loan.rate, 0.043)
+        XCTAssertEqual(viewModel.loan.minPresentValue, 1)
+        XCTAssertEqual(viewModel.loan.maxPresentValue, 4324)
+        XCTAssertEqual(viewModel.loan.minNumberOfPayments, 1)
+        XCTAssertEqual(viewModel.loan.maxNumberOfPayments, 44)
     }
 }

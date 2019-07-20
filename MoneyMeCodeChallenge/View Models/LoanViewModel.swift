@@ -7,50 +7,49 @@ import Combine
 final class LoanViewModel: BindableObject {
     
     var loan: Loan {
-        didSet { willChange.send(self) }
+        willSet { willChange.send() }
     }
     
-    var amount: Double {
-        get { loan.presentValue }
-        set { loan.presentValue = newValue }
+    var amount: String {
+       "$\(Int(loan.presentValue))"
     }
     
-    var months: Double {
-        get { loan.numberOfPayments }
-        set { loan.numberOfPayments = newValue }
+    var minAmount: String {
+        "$\(Int(loan.minPresentValue))"
     }
     
-    var interestRate: Double {
-        return loan.rate
-    }
-    
-    var minAmount: Double {
-        return loan.minPresentValue
-    }
-    
-    var maxAmount: Double {
-        return loan.maxPresentValue
+    var maxAmount: String {
+        "$\(Int(loan.maxPresentValue))"
     }
     
     let amountOffset: Double = 1000
     
-    var minMonths: Double {
-        return loan.minNumberOfPayments
+    var months: String {
+        "\(Int(loan.numberOfPayments)) \(getMonthWord(loan.numberOfPayments))"
     }
     
-    var maxMonths: Double {
-        return loan.maxNumberOfPayments
+    var minMonths: String {
+        "\(Int(loan.minNumberOfPayments)) \(getMonthWord(loan.minNumberOfPayments))"
+    }
+    
+    var maxMonths: String {
+        "\(Int(loan.maxNumberOfPayments)) \(getMonthWord(loan.maxNumberOfPayments))"
     }
     
     let monthOffset: Double = 1
     
-    let willChange = PassthroughSubject<LoanViewModel, Never>()
-    
+    let willChange = PassthroughSubject<Void, Never>()
+ 
+    var loadDetailViewModel: LoanDetailViewModel {
+            LoanDetailViewModel(loan: loan, user: UserDefaults.standard.user ?? User.sample(), storage: UserDefaults.standard)
+        }
+
     init(loan: Loan) {
         self.loan = loan
     }
     
     func getMonthWord(_ months: Double) -> String {
-        return months == 1 ? "month" : "months"
+        months == 1 ? "month" : "months"
     }
+    
 }
