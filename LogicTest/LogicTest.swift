@@ -16,10 +16,6 @@ class LogicTest: XCTestCase {
         XCTAssertLessThanOrEqual(loan.numberOfPayments, loan.maxNumberOfPayments)
         
         XCTAssertLessThan(loan.rate, 1.0)
-        
-        var loan1 = loan
-        loan1.presentValue = 4000.0
-        XCTAssertNotEqual(loan1, loan)
     }
     
     func testCurrent() {
@@ -40,7 +36,7 @@ class LogicTest: XCTestCase {
         let loan = Loan.standard()
         let viewModel = LoanViewModel(loan: loan)
         
-        XCTAssertEqual(loan, viewModel.loan)
+        XCTAssertEqual(loan.presentValue, viewModel.loan.presentValue)
         
         XCTAssertEqual(viewModel.amount, "$3000")
         XCTAssertEqual(viewModel.months, "1 month")
@@ -48,8 +44,10 @@ class LogicTest: XCTestCase {
         XCTAssertEqual(viewModel.maxAmount, "$15000")
         XCTAssertEqual(viewModel.minMonths, "1 month")
         XCTAssertEqual(viewModel.maxMonths, "36 months")
-        XCTAssertEqual(viewModel.getMonthWord(1.0), "month")
-        XCTAssertEqual(viewModel.getMonthWord(2.0), "months")
+        
+        // test monthString propety
+        XCTAssertEqual(1.0.monthString, "1 month")
+        XCTAssertEqual(2.0.monthString, "2 months")
         
         viewModel.loan.presentValue = 4000
         XCTAssertEqual(viewModel.loan.presentValue, 4000)

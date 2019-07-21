@@ -25,15 +25,15 @@ final class LoanViewModel: BindableObject {
     let amountOffset: Double = 1000
     
     var months: String {
-        "\(Int(loan.numberOfPayments)) \(getMonthWord(loan.numberOfPayments))"
+        loan.numberOfPayments.monthString
     }
     
     var minMonths: String {
-        "\(Int(loan.minNumberOfPayments)) \(getMonthWord(loan.minNumberOfPayments))"
+        loan.minNumberOfPayments.monthString
     }
     
     var maxMonths: String {
-        "\(Int(loan.maxNumberOfPayments)) \(getMonthWord(loan.maxNumberOfPayments))"
+        loan.maxNumberOfPayments.monthString
     }
     
     let monthOffset: Double = 1
@@ -47,9 +47,4 @@ final class LoanViewModel: BindableObject {
     init(loan: Loan) {
         self.loan = loan
     }
-    
-    func getMonthWord(_ months: Double) -> String {
-        months == 1 ? "month" : "months"
-    }
-    
 }

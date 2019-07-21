@@ -3,7 +3,7 @@
 
 import Foundation
 
-struct Loan: Codable {
+class Loan: Codable {
     var presentValue: Double
     var numberOfPayments: Double
     var rate: Double
@@ -13,6 +13,22 @@ struct Loan: Codable {
     
     var minNumberOfPayments: Double
     var maxNumberOfPayments: Double
+    
+    init(presentValue: Double,
+         numberOfPayments: Double,
+         rate: Double,
+         minPresentValue: Double,
+         maxPresentValue: Double,
+         minNumberOfPayments: Double,
+         maxNumberOfPayments: Double) {
+        self.presentValue = presentValue
+        self.numberOfPayments = numberOfPayments
+        self.rate = rate
+        self.minPresentValue = minPresentValue
+        self.maxPresentValue = maxPresentValue
+        self.minNumberOfPayments = minNumberOfPayments
+        self.maxNumberOfPayments = maxNumberOfPayments
+    }
 }
 
 extension Loan {
@@ -27,8 +43,6 @@ extension Loan {
     }
 }
 
-extension Loan: Equatable {}
-
 struct LoanCalculator {
     
     func pmt(rate : Double, numberOfPayments : Double, amount : Double) -> Double {
@@ -39,16 +53,5 @@ struct LoanCalculator {
 extension LoanCalculator {
     func pmt(loan: Loan) -> Double {
         return pmt(rate: loan.rate, numberOfPayments: loan.numberOfPayments, amount: loan.presentValue)
-    }
-}
-
-extension Double {
-    // round to two decimals
-    var currency: Double {
-        return (self * 100).rounded() / 100
-    }
-    
-    var currencyString: String {
-        return "$\(self.currency)"
     }
 }

@@ -7,6 +7,7 @@ import Combine
 struct LoanDetailView: View {
     
     @EnvironmentObject var viewModel: LoanDetailViewModel
+    @State private var isPresenting = false
     
     // edit user detail
     @State var editing = false
@@ -16,19 +17,22 @@ struct LoanDetailView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                // TODO: try Form instead of VStack
                 VStack(alignment: .center, spacing: space) {
                     userGroup()
-                    if !editing {
-                        Spacer()
-                        loanGroup()
-                    }
+                    Spacer()
+                    loanGroup()
                 }.padding(space)
             }.navigationBarTitle("Your qoute", displayMode: .inline)
+        }
+        .sheet(isPresented: $isPresenting) {
+            return LoanEditingView().environmentObject(LoanViewModel(loan: self.viewModel.loan)).padding()
         }
     }
     
     private func userGroup() -> some View {
         Group {
+            Spacer()
             HStack {
                 Text("Your information")
                 Spacer()
@@ -61,8 +65,9 @@ struct LoanDetailView: View {
                 textField("Email", binding: $viewModel.user.email)
             }
         }
-        .multilineTextAlignment(.trailing) // trailing for TextField's text
+            .multilineTextAlignment(.trailing) // trailing for TextField's text
             .textFieldStyle(RoundedBorderTextFieldStyle.Member.roundedBorder)
+        
     }
     
     private func textField(_ name: String, binding: Binding<String>) -> some View {
@@ -78,32 +83,38 @@ struct LoanDetailView: View {
     
     private func loanGroup() -> some View {
         Group {
-            HStack {
-                Text("Finance Detail")
+            if editing {
                 Spacer()
-                Button("Edit") { }
-            }
-            
-            HStack {
-                Text("Finance amount")
-                Spacer()
-                Text(viewModel.loan.presentValue.currencyString)
-            }
-            
-            HStack {
-                Spacer()
-                Text("over \(Int(viewModel.loan.numberOfPayments)) months").padding(.top, -20)
-            }
-
-            HStack {
-                Text("Repayments from")
-                Spacer()
-                Text(LoanCalculator().pmt(loan: viewModel.loan).currencyString)
-            }
-            
-            HStack {
-                Spacer()
-                Text("Monthly").padding(.top, -20)
+            } else {
+                HStack {
+                    Text("Finance Detail")
+                    Spacer()
+                    Button("Edit") {
+                        self.isPresenting = true
+                    }
+                }
+                
+                HStack {
+                    Text("Finance amount")
+                    Spacer()
+                    Text(viewModel.loan.presentValue.currencyString)
+                }
+                
+                HStack {
+                    Spacer()
+                    Text("over \(viewModel.loan.numberOfPayments.monthString)").padding(.top, -20)
+                }
+                
+                HStack {
+                    Text("Repayments from")
+                    Spacer()
+                    Text(LoanCalculator().pmt(loan: viewModel.loan).currencyString)
+                }
+                
+                HStack {
+                    Spacer()
+                    Text("Monthly").padding(.top, -20)
+                }
             }
         }
     }
@@ -113,7 +124,9 @@ struct LoanDetailView: View {
 #if DEBUG
 struct LoanDetailView_Previews : PreviewProvider {
     static var previews: some View {
-        let viewModel = LoanDetailViewModel(loan: Loan.standard(), user: UserDefaults.standard.user ?? User.sample(), storage: UserDefaults.standard)
+        let viewModel = LoanDetailViewModel(loan: Loan.standard(),
+                                            user: UserDefaults.standard.user ?? User.sample(),
+                                            storage: UserDefaults.standard)
         return LoanDetailView().environmentObject(viewModel)
     }
 }

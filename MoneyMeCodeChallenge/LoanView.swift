@@ -15,28 +15,7 @@ struct LoanView : View {
             
             ScrollView {
                 VStack(alignment: .center, spacing: space) {
-                    
-                    VStack(alignment: .leading) {
-                        Text(viewModel.amount)
-                        
-                        Slider(value: $viewModel.loan.presentValue, from: viewModel.loan.minPresentValue, through: viewModel.loan.maxPresentValue, by: viewModel.amountOffset)
-                        HStack {
-                            Text(viewModel.minAmount)
-                            Spacer()
-                            Text(viewModel.maxAmount)
-                        }
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text(viewModel.months)
-                        Slider(value: $viewModel.loan.numberOfPayments, from: viewModel.loan.minNumberOfPayments, through: viewModel.loan.maxNumberOfPayments, by: viewModel.monthOffset)
-                        HStack {
-                            Text(viewModel.minMonths)
-                            Spacer()
-                            Text(viewModel.maxMonths)
-                        }
-                    }
-
+                    LoanEditingView().environmentObject(viewModel)
                     NavigationLink(destination: LoanDetailView().environmentObject(viewModel.loadDetailViewModel)) {
                         Text("Calculate Quote")
                     }
@@ -47,6 +26,35 @@ struct LoanView : View {
         }
     }
     
+}
+
+struct LoanEditingView: View {
+    @EnvironmentObject var viewModel: LoanViewModel
+    
+    var body: some View {
+        Group {
+            VStack(alignment: .leading) {
+                Text(viewModel.amount)
+                
+                Slider(value: $viewModel.loan.presentValue, from: viewModel.loan.minPresentValue, through: viewModel.loan.maxPresentValue, by: viewModel.amountOffset)
+                HStack {
+                    Text(viewModel.minAmount)
+                    Spacer()
+                    Text(viewModel.maxAmount)
+                }
+            }
+            
+            VStack(alignment: .leading) {
+                Text(viewModel.months)
+                Slider(value: $viewModel.loan.numberOfPayments, from: viewModel.loan.minNumberOfPayments, through: viewModel.loan.maxNumberOfPayments, by: viewModel.monthOffset)
+                HStack {
+                    Text(viewModel.minMonths)
+                    Spacer()
+                    Text(viewModel.maxMonths)
+                }
+            }
+        }
+    }
 }
 
 #if DEBUG
