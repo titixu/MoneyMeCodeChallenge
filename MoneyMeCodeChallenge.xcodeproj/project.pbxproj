@@ -25,19 +25,11 @@
 		22872F7D22DEC1FB00868CE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22872F7C22DEC1FB00868CE0 /* Preview Assets.xcassets */; };
 		22872F8022DEC1FB00868CE0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22872F7E22DEC1FB00868CE0 /* LaunchScreen.storyboard */; };
 		22872F8B22DEC1FB00868CE0 /* MoneyMeCodeChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872F8A22DEC1FB00868CE0 /* MoneyMeCodeChallengeTests.swift */; };
-		22872F9622DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22872F9522DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.swift */; };
 		2296EC4B22DF84960041A487 /* LoanDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2296EC4A22DF84960041A487 /* LoanDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		22872F8722DEC1FB00868CE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 22872F6822DEC1F900868CE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 22872F6F22DEC1F900868CE0;
-			remoteInfo = MoneyMeCodeChallenge;
-		};
-		22872F9222DEC1FB00868CE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 22872F6822DEC1F900868CE0 /* Project object */;
 			proxyType = 1;
@@ -68,9 +60,6 @@
 		22872F8622DEC1FB00868CE0 /* MoneyMeCodeChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyMeCodeChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22872F8A22DEC1FB00868CE0 /* MoneyMeCodeChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyMeCodeChallengeTests.swift; sourceTree = "<group>"; };
 		22872F8C22DEC1FB00868CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22872F9122DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyMeCodeChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		22872F9522DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyMeCodeChallengeUITests.swift; sourceTree = "<group>"; };
-		22872F9722DEC1FB00868CE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2296EC4A22DF84960041A487 /* LoanDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoanDetailView.swift; path = ../../../../../System/Volumes/Data/Users/sam/Projects/MoneyMeCodeChallenge/MoneyMeCodeChallenge/LoanDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,13 +79,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		22872F8322DEC1FB00868CE0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		22872F8E22DEC1FB00868CE0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -140,7 +122,6 @@
 				2277A1C122E31B050070BE99 /* MoneyMe - IOS Developer Challenge.pdf */,
 				22872F7222DEC1F900868CE0 /* MoneyMeCodeChallenge */,
 				22872F8922DEC1FB00868CE0 /* MoneyMeCodeChallengeTests */,
-				22872F9422DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests */,
 				2253756C22E042C10091AE64 /* LogicTest */,
 				22872F7122DEC1F900868CE0 /* Products */,
 			);
@@ -151,7 +132,6 @@
 			children = (
 				22872F7022DEC1F900868CE0 /* MoneyMeCodeChallenge.app */,
 				22872F8622DEC1FB00868CE0 /* MoneyMeCodeChallengeTests.xctest */,
-				22872F9122DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.xctest */,
 				2253756B22E042C10091AE64 /* LogicTest.xctest */,
 			);
 			name = Products;
@@ -190,15 +170,6 @@
 				22872F8C22DEC1FB00868CE0 /* Info.plist */,
 			);
 			path = MoneyMeCodeChallengeTests;
-			sourceTree = "<group>";
-		};
-		22872F9422DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				22872F9522DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.swift */,
-				22872F9722DEC1FB00868CE0 /* Info.plist */,
-			);
-			path = MoneyMeCodeChallengeUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,24 +227,6 @@
 			productReference = 22872F8622DEC1FB00868CE0 /* MoneyMeCodeChallengeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		22872F9022DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 22872FA022DEC1FB00868CE0 /* Build configuration list for PBXNativeTarget "MoneyMeCodeChallengeUITests" */;
-			buildPhases = (
-				22872F8D22DEC1FB00868CE0 /* Sources */,
-				22872F8E22DEC1FB00868CE0 /* Frameworks */,
-				22872F8F22DEC1FB00868CE0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				22872F9322DEC1FB00868CE0 /* PBXTargetDependency */,
-			);
-			name = MoneyMeCodeChallengeUITests;
-			productName = MoneyMeCodeChallengeUITests;
-			productReference = 22872F9122DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -294,10 +247,6 @@
 						CreatedOnToolsVersion = 11.0;
 						TestTargetID = 22872F6F22DEC1F900868CE0;
 					};
-					22872F9022DEC1FB00868CE0 = {
-						CreatedOnToolsVersion = 11.0;
-						TestTargetID = 22872F6F22DEC1F900868CE0;
-					};
 				};
 			};
 			buildConfigurationList = 22872F6B22DEC1F900868CE0 /* Build configuration list for PBXProject "MoneyMeCodeChallenge" */;
@@ -315,7 +264,6 @@
 			targets = (
 				22872F6F22DEC1F900868CE0 /* MoneyMeCodeChallenge */,
 				22872F8522DEC1FB00868CE0 /* MoneyMeCodeChallengeTests */,
-				22872F9022DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests */,
 				2253756A22E042C10091AE64 /* LogicTest */,
 			);
 		};
@@ -340,13 +288,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		22872F8422DEC1FB00868CE0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		22872F8F22DEC1FB00868CE0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,14 +334,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		22872F8D22DEC1FB00868CE0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				22872F9622DEC1FB00868CE0 /* MoneyMeCodeChallengeUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -408,11 +341,6 @@
 			isa = PBXTargetDependency;
 			target = 22872F6F22DEC1F900868CE0 /* MoneyMeCodeChallenge */;
 			targetProxy = 22872F8722DEC1FB00868CE0 /* PBXContainerItemProxy */;
-		};
-		22872F9322DEC1FB00868CE0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 22872F6F22DEC1F900868CE0 /* MoneyMeCodeChallenge */;
-			targetProxy = 22872F9222DEC1FB00868CE0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -662,46 +590,6 @@
 			};
 			name = Release;
 		};
-		22872FA122DEC1FB00868CE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LJD4E9EV47;
-				INFOPLIST_FILE = MoneyMeCodeChallengeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = sam.xu.MoneyMeCodeChallengeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MoneyMeCodeChallenge;
-			};
-			name = Debug;
-		};
-		22872FA222DEC1FB00868CE0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LJD4E9EV47;
-				INFOPLIST_FILE = MoneyMeCodeChallengeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = sam.xu.MoneyMeCodeChallengeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MoneyMeCodeChallenge;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -737,15 +625,6 @@
 			buildConfigurations = (
 				22872F9E22DEC1FB00868CE0 /* Debug */,
 				22872F9F22DEC1FB00868CE0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		22872FA022DEC1FB00868CE0 /* Build configuration list for PBXNativeTarget "MoneyMeCodeChallengeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				22872FA122DEC1FB00868CE0 /* Debug */,
-				22872FA222DEC1FB00868CE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

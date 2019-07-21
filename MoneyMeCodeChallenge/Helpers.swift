@@ -10,16 +10,16 @@ import Foundation
 
 extension Double {
     var monthString: String {
-        return "\(Int(self)) \(self == 1 ? "month" : "months")"
+        "\(Int(self)) \(self == 1 ? "month" : "months")"
     }
     
     // round to two decimals
     var currency: Double {
-        return (self * 100).rounded() / 100
+        (self * 100).rounded() / 100
     }
     
     var currencyString: String {
-        return "$\(self.currency)"
+        String(format: "$%.2f", arguments: [self.currency])
     }
 
 }

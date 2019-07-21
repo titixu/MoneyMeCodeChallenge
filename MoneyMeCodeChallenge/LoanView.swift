@@ -19,7 +19,6 @@ struct LoanView : View {
                     NavigationLink(destination: LoanDetailView().environmentObject(viewModel.loadDetailViewModel)) {
                         Text("Calculate Quote")
                     }
-                    
                 }.padding()
             }
             .navigationBarTitle("Quote Calculator", displayMode: .inline)

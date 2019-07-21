@@ -3,7 +3,8 @@
 
 import Foundation
 
-class Loan: Codable {
+class Loan {
+    
     var presentValue: Double
     var numberOfPayments: Double
     var rate: Double
@@ -33,25 +34,25 @@ class Loan: Codable {
 
 extension Loan {
     static func standard() -> Loan {
-        return Loan(presentValue: 3000.0,
-                    numberOfPayments: 1.0,
-                    rate: 0.045,
-                    minPresentValue: 2000.0,
-                    maxPresentValue: 15000.0,
-                    minNumberOfPayments: 1.0,
-                    maxNumberOfPayments: 36.0)
+        Loan(presentValue: 3000.0,
+             numberOfPayments: 1.0,
+             rate: 0.045,
+             minPresentValue: 2000.0,
+             maxPresentValue: 15000.0,
+             minNumberOfPayments: 1.0,
+             maxNumberOfPayments: 36.0)
     }
 }
 
 struct LoanCalculator {
     
     func pmt(rate : Double, numberOfPayments : Double, amount : Double) -> Double {
-        return (amount * rate) / (1 - pow((1 + rate), (-numberOfPayments)))
+        (amount * rate) / (1 - pow((1 + rate), (-numberOfPayments)))
     }
 }
 
 extension LoanCalculator {
     func pmt(loan: Loan) -> Double {
-        return pmt(rate: loan.rate, numberOfPayments: loan.numberOfPayments, amount: loan.presentValue)
+        pmt(rate: loan.rate, numberOfPayments: loan.numberOfPayments, amount: loan.presentValue)
     }
 }

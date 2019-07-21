@@ -23,13 +23,19 @@ class LogicTest: XCTestCase {
         XCTAssertEqual(34.001234.currency, 34.00)
         XCTAssertEqual(34.101234.currency, 34.10)
         XCTAssertEqual(-34.106234.currency, -34.11)
-        let a: Double = 34
-        XCTAssertEqual(a.currency, 34)
+        XCTAssertEqual((-34.106234).currencyString, "$-34.11")
+        
+        let aDouble: Double = 34
+        XCTAssertEqual(aDouble.currency, 34)
+        XCTAssertEqual(aDouble.currencyString, "$34.00")
     }
     
     func testPMT() {
         let payment = LoanCalculator().pmt(rate: 0.045, numberOfPayments: 36, amount: 5000).currency
-        XCTAssert(payment == 283.03, "monthly payment should 283.03")
+        XCTAssert(payment == 283.03, "monthly payment should be 283.03")
+        
+        let loan = Loan.standard()
+        XCTAssertEqual(3135.00, LoanCalculator().pmt(loan: loan).currency)
     }
     
     func testLoanViewModel() {

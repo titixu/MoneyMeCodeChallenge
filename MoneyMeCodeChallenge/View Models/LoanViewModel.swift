@@ -7,7 +7,9 @@ import Combine
 final class LoanViewModel: BindableObject {
     
     var loan: Loan {
-        willSet { willChange.send() }
+        willSet {
+            willChange.send()
+        }
     }
     
     var amount: String {

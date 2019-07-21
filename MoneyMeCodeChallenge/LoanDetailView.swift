@@ -7,7 +7,8 @@ import Combine
 struct LoanDetailView: View {
     
     @EnvironmentObject var viewModel: LoanDetailViewModel
-    @State private var isPresenting = false
+    @State private var isPresentingSheet = false
+    @State private var isPresentingAlert = false
     
     // edit user detail
     @State var editing = false
@@ -17,16 +18,33 @@ struct LoanDetailView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                // TODO: try Form instead of VStack
                 VStack(alignment: .center, spacing: space) {
                     userGroup()
                     Spacer()
                     loanGroup()
+                    if !editing {
+                        Button("Apply Now") {
+                            self.isPresentingAlert = true
+                        }
+                    } else {
+                        Spacer()
+                    }
                 }.padding(space)
+                
             }.navigationBarTitle("Your qoute", displayMode: .inline)
         }
-        .sheet(isPresented: $isPresenting) {
-            return LoanEditingView().environmentObject(LoanViewModel(loan: self.viewModel.loan)).padding()
+            // Present Loan view Sheet
+        .sheet(isPresented: $isPresentingSheet) {
+            Group {
+                VStack(alignment: .center, spacing: 30) {
+                    Text("Your Quote")
+                    LoanEditingView().environmentObject(LoanViewModel(loan: self.viewModel.loan))
+                }.padding()
+                Spacer()
+            }
+        }
+        .alert(isPresented: $isPresentingAlert) {
+            Alert(title: Text("Your Application is Successful"))
         }
     }
     
@@ -90,7 +108,7 @@ struct LoanDetailView: View {
                     Text("Finance Detail")
                     Spacer()
                     Button("Edit") {
-                        self.isPresenting = true
+                        self.isPresentingSheet = true
                     }
                 }
                 
