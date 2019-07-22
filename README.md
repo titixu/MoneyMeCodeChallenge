@@ -6,8 +6,8 @@ This demo project is MoneyMe Code Challenge. This project featuring the new Swif
 * Xcode Version 11.0 beta 4 (11M374r) - it may not work with next new Xcode beta updates, as the APIs keep changing between beta versions
 * macOS Catalina Version 10.15 Beta (19A512f) - it may not work with next macOS beta updates, as the APIs keep changing between beta versions
 
-## UITestes
-There are 2 UITest targets, most of the tests are in LogicText target
+## Unit Testes
+There are 2 Unit Test targets, most of the tests are in LogicText target
 * MoneyMeCodeChallengeTests - require MoneyMeCodeChallenge host application
 * LogicTest - require no host application
 
